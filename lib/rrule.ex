@@ -6,7 +6,7 @@ defmodule RRule do
     otp_app: :rrule,
     crate: :rrule,
     base_url: "https://github.com/mfeckie/rrule/releases/download/#{version}",
-    force_build: [rrule: System.get_env("RUSTLER_PRECOMPILATION_EXAMPLE_BUILD") in ["1", "true"]],
+    force_build: System.get_env("FORCE_COMPILE") in ["1", "true"],
     targets: ~w(
       aarch64-apple-darwin
       aarch64-unknown-linux-gnu
