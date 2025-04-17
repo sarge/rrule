@@ -45,7 +45,7 @@ defmodule RRule.MixProject do
     [
       {:rustler, "~> 0.36.0", optional: true},
       {:rustler_precompiled, "~> 0.8.0"},
-      {:ex_doc, ">= 0.0.0", only: :docs}
+      {:ex_doc, "0.37.3", only: :docs, optional: true}
     ]
   end
 end
