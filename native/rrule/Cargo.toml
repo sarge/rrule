@@ -10,7 +10,7 @@ path = "src/lib.rs"
 crate-type = ["cdylib"]
 
 [dependencies]
-chrono = "0.4.19"
-chrono-tz = "0.8.1"
-rustler = "0.29.0"
-rrule = "0.10.0"
+chrono = "0.4.40"
+chrono-tz = "0.10.3"
+rustler = "0.36.1"
+rrule = "0.13.0"

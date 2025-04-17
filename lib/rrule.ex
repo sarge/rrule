@@ -6,7 +6,7 @@ defmodule RRule do
     otp_app: :rrule,
     crate: :rrule,
     base_url: "https://github.com/mfeckie/rrule/releases/download/#{version}",
-    force_build: System.get_env("RUSTLER_PRECOMPILATION_EXAMPLE_BUILD") in ["1", "true"],
+    force_build: [rrule: System.get_env("RUSTLER_PRECOMPILATION_EXAMPLE_BUILD") in ["1", "true"]],
     targets: ~w(
       aarch64-apple-darwin
       aarch64-unknown-linux-gnu
@@ -30,8 +30,8 @@ defmodule RRule do
 
   ## Example
 
-      iex> RRule.parse( "DTSTART:20120101T093000Z\\nRRULE:FREQ=DAILY;COUNT=5")
-      {:ok, "DTSTART:20120101T093000Z\\nFREQ=daily;COUNT=5;BYHOUR=9;BYMINUTE=30;BYSECOND=0"}
+      iex> RRule.parse("DTSTART:20120101T093000Z\\nRRULE:FREQ=DAILY;COUNT=5")
+      {:ok, "DTSTART:20120101T093000Z\\nRRULE:FREQ=DAILY;COUNT=5;BYHOUR=9;BYMINUTE=30;BYSECOND=0"}
   """
   def parse(_RRule_string), do: :erlang.nif_error(:not_loaded)
 

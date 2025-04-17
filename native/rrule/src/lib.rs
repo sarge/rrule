@@ -1,6 +1,6 @@
 extern crate rustler;
 use chrono::{DateTime, Datelike, TimeZone, Timelike};
-use rrule::{RRuleSet, Tz};
+use rrule::{RRuleResult, RRuleSet, Tz};
 use rustler::{Atom, Encoder, Env, NifStruct, Term};
 
 #[rustler::nif]
@@ -88,10 +88,9 @@ fn all<'a>(env: Env<'a>, string: &str, limit: u64) -> Result<Term<'a>, String> {
         Err(err) => return Err(format!("{}", err)),
     };
 
-    let (results, _has_more) = rrule
-    .all(limit as u16);
+    let result: RRuleResult = rrule.all(limit as u16);
 
-    let mapped: Vec<ElixirDateTime> = results.iter().map(ElixirDateTime::new).collect();
+    let mapped: Vec<ElixirDateTime> = result.dates.iter().map(ElixirDateTime::new).collect();
 
     Ok((mapped).encode(env))
 }
@@ -113,13 +112,13 @@ fn all_between<'a>(
         Err(err) => return Err(format!("{}", err)),
     };
 
-    let (results, has_more) = rrule
+    let result: RRuleResult = rrule
         .after(start_date.to_chrono())
         .before(end_date.to_chrono())
         .all(limit as u16);
 
-    let mapped: Vec<ElixirDateTime> = results.iter().map(ElixirDateTime::new).collect();
-    Ok(((mapped, has_more)).encode(env))
+    let mapped: Vec<ElixirDateTime> = result.dates.iter().map(ElixirDateTime::new).collect();
+    Ok(((mapped, result.limited)).encode(env))
 }
 
 #[rustler::nif]
@@ -142,7 +141,4 @@ fn get_start_date<'a>(env: Env<'a>, rrule: &str) -> Result<Term<'a>, String> {
     Ok((start_date_time).encode(env))
 }
 
-rustler::init!(
-    "Elixir.RRule",
-    [all, all_between, get_start_date, parse, validate]
-);
+rustler::init!("Elixir.RRule");
