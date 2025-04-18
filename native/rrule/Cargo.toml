@@ -12,5 +12,10 @@ crate-type = ["cdylib"]
 [dependencies]
 chrono = "0.4.40"
 chrono-tz = "0.10.3"
-rustler = "0.36.1"
+rustler = { version = "0.36", default-features = false, features = ["derive"] }
 rrule = "0.13.0"
+
+[features]
+default = ["nif_version_2_16"]
+nif_version_2_16 = ["rustler/nif_version_2_16"]
+nif_version_2_17 = ["rustler/nif_version_2_17"]
