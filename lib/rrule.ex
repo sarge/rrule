@@ -7,18 +7,18 @@ defmodule RRule do
     crate: :rrule,
     base_url: "https://github.com/mfeckie/rrule/releases/download/#{version}",
     force_build: System.get_env("FORCE_COMPILE") in ["1", "true"],
-    targets: ~w(
-      aarch64-apple-darwin
-      aarch64-unknown-linux-gnu
-      aarch64-unknown-linux-musl
-      riscv64gc-unknown-linux-gnu
-      x86_64-apple-darwin
-      x86_64-pc-windows-msvc
-      x86_64-pc-windows-gnu
-      x86_64-unknown-linux-gnu
-      x86_64-unknown-linux-musl
-    ),
-    version: version
+    version: version,
+    nif_versions: ["2.16", "2.17"],
+    targets: [
+      "aarch64-apple-darwin",
+      "aarch64-unknown-linux-gnu",
+      "x86_64-apple-darwin",
+      "x86_64-pc-windows-gnu",
+      "x86_64-pc-windows-msvc",
+      "x86_64-unknown-linux-gnu",
+      "x86_64-unknown-linux-musl",
+      "arm-unknown-linux-gnueabihf"
+    ]
 
   @moduledoc """
   Wrapper functions for interacting with the Rust based rrule library
