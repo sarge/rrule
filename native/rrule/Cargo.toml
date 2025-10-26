@@ -1,6 +1,6 @@
 [package]
 name = "rrule"
-version = "0.1.0"
+version = "0.15.4"
 authors = []
 edition = "2018"
 
@@ -19,3 +19,6 @@ rrule = "0.13.0"
 default = ["nif_version_2_16"]
 nif_version_2_16 = ["rustler/nif_version_2_16"]
 nif_version_2_17 = ["rustler/nif_version_2_17"]
+
+# Forces Date only or floating DateTimes to be UTC
+force-utc = []

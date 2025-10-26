@@ -1,14 +1,14 @@
 defmodule RRule.MixProject do
   use Mix.Project
 
-  @version "0.15.3"
+  @version "0.15.4"
 
   def project do
     [
-      app: :rrule,
+      app: :rrule_ext,
       version: @version,
       elixir: "~> 1.13 or ~> 1.14",
-      description: "Elixir wrapper for Rust based RRule parsing",
+      description: "Elixir wrapper for Rust based RRule parsing, extending on the rrule elixir library",
       start_permanent: Mix.env() == :prod,
       package: package(),
       docs: [
@@ -28,10 +28,11 @@ defmodule RRule.MixProject do
 
   def package do
     [
+      name: "rrule_ext",
       licenses: ["MIT"],
-      maintainers: ["Martin Feckie"],
+      maintainers: ["Mark Sargent"],
       links: %{
-        "Github" => "https://github.com/mfeckie/rrule"
+        "Github" => "https://github.com/sarge/rrule"
       },
       files: ["lib", "native", "README.md", "mix.exs", "checksum-*.exs"],
       exclude_patterns: [

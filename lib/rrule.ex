@@ -3,7 +3,7 @@ defmodule RRule do
   version = mix_config[:version]
 
   use RustlerPrecompiled,
-    otp_app: :rrule,
+    otp_app: :rrule_ext,
     crate: :rrule,
     base_url: "https://github.com/sarge/rrule/releases/download/#{version}",
     force_build: System.get_env("FORCE_COMPILE") in ["1", "true"],
