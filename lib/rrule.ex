@@ -5,7 +5,7 @@ defmodule RRule do
   use RustlerPrecompiled,
     otp_app: :rrule,
     crate: :rrule,
-    base_url: "https://github.com/mfeckie/rrule/releases/download/#{version}",
+    base_url: "https://github.com/sarge/rrule/releases/download/#{version}",
     force_build: System.get_env("FORCE_COMPILE") in ["1", "true"],
     version: version,
     nif_versions: ["2.16", "2.17"],
