@@ -2,6 +2,40 @@ defmodule RRuleTest do
   use ExUnit.Case, async: true
   doctest RRule
 
+  test "Uses UTC as local timezone" do
+    {:ok, {occurrences, has_more}} =
+      RRule.all_between(
+        "DTSTART;VALUE=DATE:20201214\nRRULE:FREQ=DAILY;COUNT=2;",
+        ~U[2020-12-14 00:00:00Z],
+        ~U[2020-12-15 00:00:00Z]
+      )
+
+    assert occurrences == [
+             ~U[2020-12-14 00:00:00Z],
+             ~U[2020-12-15 00:00:00Z]
+           ]
+
+    refute has_more
+  end
+
+  test "Uses Include DTSTART" do
+    {:ok, {occurrences, has_more}} =
+      RRule.all_between(
+        "DTSTART:20230101T100000Z\nRRULE:FREQ=DAILY;INTERVAL=2;COUNT=3;X-INCLUDE-DTSTART=TRUE",
+        ~U[2023-01-01 00:00:00Z],
+        ~U[2023-02-01 00:00:00Z]
+      )
+
+    assert occurrences == [
+             ~U[2023-01-01 10:00:00Z],
+             ~U[2023-01-03 10:00:00Z],
+             ~U[2023-01-05 10:00:00Z],
+             ~U[2023-01-07 10:00:00Z]
+           ]
+
+    refute has_more
+  end
+
   test "Lists occurrences between for RRULE" do
     {:ok, {occurrences, has_more}} =
       RRule.all_between(

@@ -13,12 +13,10 @@ crate-type = ["cdylib"]
 chrono = "0.4.40"
 chrono-tz = "0.10.3"
 rustler = { version = "0.36", default-features = false, features = ["derive"] }
-rrule = "0.13.0"
+rrule = {git = 'https://github.com/sarge/rust-rrule', features= ["force-utc"]}
 
 [features]
 default = ["nif_version_2_16"]
 nif_version_2_16 = ["rustler/nif_version_2_16"]
 nif_version_2_17 = ["rustler/nif_version_2_17"]
 
-# Forces Date only or floating DateTimes to be UTC
-force-utc = []

@@ -15,3 +15,8 @@
 ## 0.7.0
 
 Update source project
+
+
+## 0.15.5
+
+Set force_utc build flag
