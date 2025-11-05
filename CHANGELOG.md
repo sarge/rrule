@@ -20,3 +20,7 @@ Update source project
 ## 0.15.5
 
 Set force_utc build flag
+
+## 0.16.0
+
+LOCAL-TZID support

@@ -1,6 +1,6 @@
 [package]
 name = "rrule"
-version = "0.15.4"
+version = "0.16.2"
 authors = []
 edition = "2018"
 
