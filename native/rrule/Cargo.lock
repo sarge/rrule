@@ -304,7 +304,7 @@ checksum = "2b15c43186be67a4fd63bee50d0303afffcef381492ebe2c5d87f324e1b8815c"
 [[package]]
 name = "rrule"
 version = "0.16.0"
-source = "git+https://github.com/sarge/rust-rrule#bfd78fc4b300ec66a555046748ee1eaab7520204"
+source = "git+https://github.com/sarge/rust-rrule#1cd1331eeb35280671206499bf1d0740896702bc"
 dependencies = [
  "chrono",
  "chrono-tz",
