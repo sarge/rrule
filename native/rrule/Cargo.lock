@@ -303,24 +303,24 @@ checksum = "2b15c43186be67a4fd63bee50d0303afffcef381492ebe2c5d87f324e1b8815c"
 
 [[package]]
 name = "rrule"
-version = "0.16.0"
-source = "git+https://github.com/sarge/rust-rrule#1cd1331eeb35280671206499bf1d0740896702bc"
+version = "0.16.6"
+dependencies = [
+ "chrono",
+ "chrono-tz",
+ "rrule 0.16.6 (git+https://github.com/sarge/rust-rrule#a78e6d17a84de8cee31d3b571ef98affd53085e0)",
+ "rustler",
+]
+
+[[package]]
+name = "rrule"
+version = "0.16.6"
+source = "git+https://github.com/sarge/rust-rrule#a78e6d17a84de8cee31d3b571ef98affd53085e0#a78e6d17a84de8cee31d3b571ef98affd53085e0"
 dependencies = [
  "chrono",
  "chrono-tz",
  "log",
  "regex",
  "thiserror",
-]
-
-[[package]]
-name = "rrule"
-version = "0.15.4"
-dependencies = [
- "chrono",
- "chrono-tz",
- "rrule 0.15.0",
- "rustler",
 ]
 
 [[package]]

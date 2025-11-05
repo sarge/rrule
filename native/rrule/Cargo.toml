@@ -1,6 +1,6 @@
 [package]
 name = "rrule"
-version = "0.16.2"
+version = "0.16.6"
 authors = []
 edition = "2018"
 
@@ -13,7 +13,7 @@ crate-type = ["cdylib"]
 chrono = "0.4.40"
 chrono-tz = "0.10.3"
 rustler = { version = "0.36", default-features = false, features = ["derive"] }
-rrule = {git = 'https://github.com/sarge/rust-rrule', features= []}
+rrule = {git = 'https://github.com/sarge/rust-rrule#a78e6d17a84de8cee31d3b571ef98affd53085e0', features= []}
 
 [features]
 default = ["nif_version_2_16"]
