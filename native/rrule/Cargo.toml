@@ -13,7 +13,7 @@ crate-type = ["cdylib"]
 chrono = "0.4.40"
 chrono-tz = "0.10.3"
 rustler = { version = "0.36", default-features = false, features = ["derive"] }
-rrule = {git = 'https://github.com/sarge/rust-rrule#a78e6d17a84de8cee31d3b571ef98affd53085e0', features= []}
+rrule = {git = 'https://github.com/sarge/rust-rrule', rev = "85bfc92b61b3a6f880b76376d3766d5cf7bde3e6", features= []}
 
 [features]
 default = ["nif_version_2_16"]

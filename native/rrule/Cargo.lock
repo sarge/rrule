@@ -307,14 +307,14 @@ version = "0.16.6"
 dependencies = [
  "chrono",
  "chrono-tz",
- "rrule 0.16.6 (git+https://github.com/sarge/rust-rrule#a78e6d17a84de8cee31d3b571ef98affd53085e0)",
+ "rrule 0.16.7",
  "rustler",
 ]
 
 [[package]]
 name = "rrule"
-version = "0.16.6"
-source = "git+https://github.com/sarge/rust-rrule#a78e6d17a84de8cee31d3b571ef98affd53085e0#a78e6d17a84de8cee31d3b571ef98affd53085e0"
+version = "0.16.7"
+source = "git+https://github.com/sarge/rust-rrule?rev=85bfc92b61b3a6f880b76376d3766d5cf7bde3e6#85bfc92b61b3a6f880b76376d3766d5cf7bde3e6"
 dependencies = [
  "chrono",
  "chrono-tz",
