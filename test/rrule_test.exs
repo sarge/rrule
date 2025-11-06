@@ -5,14 +5,46 @@ defmodule RRuleTest do
   test "Uses UTC as local timezone" do
     {:ok, {occurrences, has_more}} =
       RRule.all_between(
-        "DTSTART;VALUE=DATE:20201214\nRRULE:FREQ=DAILY;COUNT=2;",
-        ~U[2020-12-14 00:00:00Z],
-        ~U[2020-12-15 00:00:00Z]
+        "DTSTART;VALUE=DATE:20201214\nRRULE:LOCAL-TZID=Pacific/Auckland;FREQ=DAILY;COUNT=2;",
+        ~U[2020-12-13 00:00:00Z],
+        ~U[2020-12-16 00:00:00Z]
       )
 
     assert occurrences == [
-             ~U[2020-12-14 00:00:00Z],
-             ~U[2020-12-15 00:00:00Z]
+             ~U[2020-12-13 11:00:00Z],
+             ~U[2020-12-14 11:00:00Z]
+           ]
+
+    refute has_more
+  end
+
+  test "Uses UTC as local timezone with the BYHOUR" do
+    {:ok, {occurrences, has_more}} =
+      RRule.all_between(
+        "DTSTART;VALUE=DATE:20201214\nRRULE:LOCAL-TZID=UTC;FREQ=DAILY;BYHOUR=9,12,15;COUNT=2;",
+        ~U[2020-12-13 00:00:00Z],
+        ~U[2020-12-16 00:00:00Z]
+      )
+
+    assert occurrences == [
+             ~U[2020-12-14 09:00:00Z],
+             ~U[2020-12-14 12:00:00Z]
+           ]
+
+    refute has_more
+  end
+
+  test "Uses Pacific/Auckalnd as local timezone with the BYHOUR" do
+    {:ok, {occurrences, has_more}} =
+      RRule.all_between(
+        "DTSTART;VALUE=DATE:20201214\nRRULE:LOCAL-TZID=Pacific/Auckland;FREQ=DAILY;BYHOUR=9,12,15;COUNT=2;",
+        ~U[2020-12-13 00:00:00Z],
+        ~U[2020-12-16 00:00:00Z]
+      )
+
+    assert occurrences == [
+             ~U[2020-12-13 20:00:00Z],
+             ~U[2020-12-13 23:00:00Z]
            ]
 
     refute has_more

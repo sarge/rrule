@@ -19,9 +19,15 @@ end
 
 ## Release Process
 
-1. Make the sure correct version of rust_rrule is being referenced. See `native/rrule/Cargo.toml` for more details.
+1. Make the sure correct version of rust_rrule is being referenced. See `native/rrule/Cargo.toml` for more details. Set the `rev=`
 
-2. Update the mix version `mix.exs`
+2. Update the mix version
+
+  ```bash
+  mix.exs
+  # this will update the cargo.lock
+  FORCE_COMPILE=1 mix rustler_precompiled.download RRule --only-local
+  ```
 
 3. Commit change and tag version
 
